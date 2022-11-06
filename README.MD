@@ -8,10 +8,16 @@ This project is an implementation to get discords notifications about surebets f
 - [x] Configure cron job to scrape periodically
 
 
+
+
 ## TODO
 
-- [ ] Bug fix: sent bet with same id and new odd
-- [ ] Feature: remove messages of invalid bets or finished bets
+
+- [ ] Config: switch to typescript
+- [ ] Config: linter and format
+- [ ] Config: docker 
 - [ ] Refactor: clean and organize code 
 - [ ] Feature: manage data with database 
+- [ ] Bug fix: sent bet with same id and new odd
+- [ ] Feature: remove messages of invalid bets or finished bets
 - [ ] Feature: create portal to manage bots and bets 

@@ -16,7 +16,7 @@ exports.login = (token) => {
 };
 
 exports.sendEmbedMessage = async (client, channelID, embeds, buttons) => {
-  await client.channels.cache
+  const message = await client.channels.cache
     .get(channelID)
     .send({ embeds: [...embeds, ...embeds], components: [...buttons] });
 };
