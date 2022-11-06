@@ -12,6 +12,6 @@ This project is an implementation to get discords notifications about surebets f
 
 - [ ] Bug fix: sent bet with same id and new odd
 - [ ] Feature: remove messages of invalid bets or finished bets
-- [ ] Refactor: Clean and organize code 
-- [ ] Feature: Manage data with database 
-- [ ] Feature: Create portal to manage bots and bets 
+- [ ] Refactor: clean and organize code 
+- [ ] Feature: manage data with database 
+- [ ] Feature: create portal to manage bots and bets 
