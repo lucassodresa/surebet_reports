@@ -1,4 +1,4 @@
-const { getConfig, BRENNO_CONFIG_URL } = require("./config/surebet");
+const { getConfig } = require("./config/surebet");
 const fs = require("fs");
 const axios = require("axios");
 const { Events } = require("discord.js");
@@ -19,7 +19,7 @@ const execute = async () => {
   try {
     // get surebet raw data
     const { headers, params, pathname, baseURL } = getConfig({
-      fullUrl: BRENNO_CONFIG_URL,
+      fullUrl: process.env.BRENNO_CONFIG_URL,
     });
     const { data, status } = await axios.get(pathname, {
       headers,
