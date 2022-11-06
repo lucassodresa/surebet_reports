@@ -6,3 +6,12 @@ This project is an implementation to get discords notifications about surebets f
 - [x] Create data adapter to scrape information from website
 - [x] Configure database to avoid repetitive messages
 - [x] Configure cron job to scrape periodically
+
+
+## TODO
+
+- [ ] Bug fix: sent bet with same id and new odd
+- [ ] Feature: remove messages of invalid bets or finished bets
+- [ ] Refactor: Clean and organize code 
+- [ ] Feature: Manage data with database 
+- [ ] Feature: Create portal to manage bots and bets 
