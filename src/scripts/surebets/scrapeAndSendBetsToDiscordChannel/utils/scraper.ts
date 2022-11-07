@@ -1,7 +1,7 @@
-const cheerio = require("cheerio");
+import { load } from "cheerio";
 
-const getData = (htmlString, { baseURL }) => {
-  const $ = cheerio.load(htmlString);
+export const getBetsFromPage = ({ baseURL, htmlString }) => {
+  const $ = load(htmlString);
   const betsTable = $(".surebet_record");
 
   const bets = betsTable.toArray().map((bet) => {
@@ -62,5 +62,3 @@ const getData = (htmlString, { baseURL }) => {
 
   return bets;
 };
-
-module.exports = { getData };

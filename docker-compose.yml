@@ -1,0 +1,24 @@
+version: "3.9"
+
+services:
+  # mongo:
+  #   container_name: mongo
+  #   image: mongo
+  #   restart: always
+  #   environment:
+  #     MONGO_INITDB_ROOT_USERNAME: root
+  #     MONGO_INITDB_ROOT_PASSWORD: root
+  #   volumes:
+  #     - .:/usr/app
+  #   ports:
+  #     - '27017:27017'
+
+  app: 
+    build: .
+    container_name: surebet_reports
+    # links:
+    #   - mongo
+    # depends_on:
+    #   - mongo
+    # environment:
+    #   DB_HOST: mongodb://root:root@mongo:27017/

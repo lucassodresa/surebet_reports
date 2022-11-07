@@ -1,27 +1,29 @@
-const {
+import {
   Client,
   GatewayIntentBits,
   EmbedBuilder,
   ActionRowBuilder,
   ButtonBuilder,
   ButtonStyle,
-} = require("discord.js");
+} from "discord.js";
 
-const { format } = require("date-fns");
+import { format } from "date-fns";
 
-exports.login = (token) => {
+export const loginDiscordBot = (token: string) => {
   const client = new Client({ intents: [GatewayIntentBits.Guilds] });
   client.login(token);
   return client;
 };
 
-exports.sendEmbedMessage = async (client, channelID, embeds, buttons) => {
+export const sendEmbedMessage = async (client, channelID, embeds, buttons) => {
   const message = await client.channels.cache
     .get(channelID)
     .send({ embeds: [...embeds, ...embeds], components: [...buttons] });
+
+  return message;
 };
 
-exports.generateEmbedMessage = ({ bet }) => {
+export const generateEmbedMessage = ({ bet }) => {
   const buttons = bet.bookmarkers.map(({ name, event }) => {
     return new ActionRowBuilder().addComponents(
       new ButtonBuilder()
@@ -71,6 +73,14 @@ exports.generateEmbedMessage = ({ bet }) => {
         name: `League`,
         value: bet.bookmarkers[0].event.league,
       },
+      {
+        name: `id`,
+        value: bet.id,
+      },
+      {
+        name: `profit`,
+        value: bet.profit.toFixed(2),
+      },
     ])
     .setThumbnail(
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9XkFUpNbFAajmMIMGIFSpELiGl87MYzYaiQ&usqp=CAU"
@@ -83,4 +93,4 @@ exports.generateEmbedMessage = ({ bet }) => {
   return { embeds: [embed], buttons };
 };
 
-exports.CHANNEL_ID = "1038193303692263478";
+export const CHANNEL_ID = "1038193303692263478";

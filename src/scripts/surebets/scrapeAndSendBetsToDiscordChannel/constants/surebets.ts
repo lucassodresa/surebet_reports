@@ -1,6 +1,7 @@
-require("dotenv").config();
+import * as dotenv from "dotenv";
+dotenv.config();
 
-const globalConfig = {
+export const globalConfig = {
   headers: {
     accept:
       "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,/;q=0.8,application/signed-exchange;v=b3;q=0.9",
@@ -19,21 +20,4 @@ const globalConfig = {
     "upgrade-insecure-requests": "1",
     cookie: process.env.AUTHENTICATED_COOKIE,
   },
-};
-
-const getConfig = ({ fullUrl }) => {
-  const { origin, pathname, searchParams } = new URL(fullUrl);
-  const params = Object.fromEntries(searchParams);
-
-  return {
-    headers: globalConfig.headers,
-    params,
-    baseURL: origin,
-    pathname,
-    fullUrl,
-  };
-};
-
-module.exports = {
-  getConfig,
 };
