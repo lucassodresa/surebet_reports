@@ -5,13 +5,14 @@ import { getBetsFromPage } from "./utils/scraper";
 
 export const scrapeAndSendBetsToDiscordChannel = async (
   client: Client,
-  channelID: string
+  channelID: string,
+  cookies: string
 ) => {
   try {
     // TODO: treat pagination cases
 
     // get surebet raw data
-    const { htmlPageWithBets, baseURL } = await getBetsPage();
+    const { htmlPageWithBets, baseURL } = await getBetsPage(cookies);
 
     // extract and treat data
     const bets = getBetsFromPage({
@@ -65,9 +66,17 @@ export const scrapeAndSendBetsToDiscordChannel = async (
     betsToSend.length
       ? console.table(betsToSend)
       : console.log("No bets to send");
+
+    return {
+      success: true,
+    };
   } catch (error) {
     console.log("Something went wrong");
 
     console.log(error);
+
+    return {
+      success: false,
+    };
   }
 };

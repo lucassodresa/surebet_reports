@@ -6,13 +6,47 @@ import {
   loginDiscordBot,
   CHANNEL_ID,
 } from "./scripts/surebets/scrapeAndSendBetsToDiscordChannel/utils/discord";
+import { surebetLogin } from "./scripts/surebets/surebetLogin";
 
 dotenv.config();
 
 const discordClient = loginDiscordBot(process.env.BOT_TOKEN);
 
 discordClient.on(Events.ClientReady, async () => {
-  cron.schedule("*/10 * * * * *", () => {
-    scrapeAndSendBetsToDiscordChannel(discordClient, CHANNEL_ID);
-  });
+  let globalCookies: string;
+
+  const loginSurebetsTask = cron.schedule(
+    "* * * * *",
+    async () => {
+      const { cookies } = await surebetLogin();
+      if (cookies) {
+        globalCookies = cookies;
+        loginSurebetsTask.stop();
+        scrapeBetsTasks.start();
+      }
+    },
+    { scheduled: false }
+  );
+
+  const scrapeBetsTasks = cron.schedule(
+    "*/10 * * * * *",
+    async () => {
+      console.log("Scrapping data...");
+      const { success } = await scrapeAndSendBetsToDiscordChannel(
+        discordClient,
+        CHANNEL_ID,
+        globalCookies
+      );
+
+      if (!success) {
+        scrapeBetsTasks.stop();
+        loginSurebetsTask.start();
+      }
+
+      console.log("Data scrapped!!\n\n");
+    },
+    { scheduled: false }
+  );
+
+  loginSurebetsTask.start();
 });

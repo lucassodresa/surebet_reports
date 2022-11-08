@@ -13,11 +13,15 @@ This project is an implementation to get discords notifications about surebets f
 ## TODO
 
 
-- [ ] Config: switch to typescript
-- [ ] Config: linter and format
-- [ ] Config: docker 
-- [ ] Refactor: clean and organize code 
+- [x] Config: switch to typescript
+- [x] Config: linter and format
+- [x] Config: docker 
+- [x] Refactor: clean and organize code 
+- [x] Bug fix: sent bet with same id and new odd
+- [x] Feature: remove messages of invalid bets or finished bets
+- [x] Feature: login 1 minutes after request failed with 503 status
+- [ ] Feature: scrape bets with multiple pages
+- [ ] Feature: scrape group of bets (multiple bets in same event)
+  
 - [ ] Feature: manage data with database 
-- [ ] Bug fix: sent bet with same id and new odd
-- [ ] Feature: remove messages of invalid bets or finished bets
 - [ ] Feature: create portal to manage bots and bets 
