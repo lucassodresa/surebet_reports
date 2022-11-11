@@ -18,7 +18,7 @@ discordClient.on(Events.ClientReady, async () => {
   let globalCookies: string;
 
   const loginSurebetsTask = cron.schedule(
-    "* * * * * *",
+    "* * * * *",
     async () => {
       const { cookies } = await surebetLogin();
       if (cookies) {
