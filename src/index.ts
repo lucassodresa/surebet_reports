@@ -18,7 +18,7 @@ discordClient.on(Events.ClientReady, async () => {
   let globalCookies: string;
 
   const loginSurebetsTask = cron.schedule(
-    "* * * * *",
+    "*/2 * * * *", // At every 2nd minute.
     async () => {
       const { cookies } = await surebetLogin();
       if (cookies) {
@@ -31,7 +31,7 @@ discordClient.on(Events.ClientReady, async () => {
   );
 
   const scrapeBetsTasks = cron.schedule(
-    "*/10 * * * * *",
+    "*/10 * * * * *", // At every 10th second.
     async () => {
       console.log("Scrapping data...");
       const { success } = await scrapeAndSendBetsToDiscordChannel(
