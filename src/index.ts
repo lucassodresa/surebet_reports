@@ -1,4 +1,6 @@
+// import puppeteer from "puppeteer-core";
 import * as dotenv from "dotenv";
+
 import cron from "node-cron";
 import { Events } from "discord.js";
 import { scrapeAndSendBetsToDiscordChannel } from "./scripts/surebets/scrapeAndSendBetsToDiscordChannel";
@@ -16,7 +18,7 @@ discordClient.on(Events.ClientReady, async () => {
   let globalCookies: string;
 
   const loginSurebetsTask = cron.schedule(
-    "* * * * *",
+    "* * * * * *",
     async () => {
       const { cookies } = await surebetLogin();
       if (cookies) {

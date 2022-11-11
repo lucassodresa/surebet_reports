@@ -18,6 +18,5 @@ export const globalConfig = {
     "sec-fetch-site": "same-origin",
     "sec-fetch-user": "?1",
     "upgrade-insecure-requests": "1",
-    cookie: process.env.AUTHENTICATED_COOKIE,
   },
 };

@@ -9,6 +9,11 @@ This project is an implementation to get discords notifications about surebets f
 
 
 
+## Instalation
+
+#### If you are using WSL run:
+`sudo apt install libnss3 libatk-adaptor libcups2 libxkbcommon0 libgtk-3-0 libgbm1`
+
 
 ## TODO
 
